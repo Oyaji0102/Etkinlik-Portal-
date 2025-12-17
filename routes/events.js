@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const storage = require('../data/storage');
+const { sanitizeHtml } = require('../utils/sanitize');
 
 // Get all events
 router.get('/', (req, res) => {
@@ -44,12 +45,12 @@ router.post('/', (req, res) => {
         
         const newEvent = {
             id: uuidv4(),
-            title,
+            title: sanitizeHtml(title),
             type,
-            description: description || '',
+            description: sanitizeHtml(description || ''),
             date,
-            location: location || '',
-            organizerName,
+            location: sanitizeHtml(location || ''),
+            organizerName: sanitizeHtml(organizerName),
             capacity: capacity || null,
             createdAt: new Date().toISOString()
         };
@@ -72,12 +73,12 @@ router.put('/:id', (req, res) => {
         }
         
         const updatedData = {};
-        if (title) updatedData.title = title;
+        if (title) updatedData.title = sanitizeHtml(title);
         if (type) updatedData.type = type;
-        if (description !== undefined) updatedData.description = description;
+        if (description !== undefined) updatedData.description = sanitizeHtml(description);
         if (date) updatedData.date = date;
-        if (location !== undefined) updatedData.location = location;
-        if (organizerName) updatedData.organizerName = organizerName;
+        if (location !== undefined) updatedData.location = sanitizeHtml(location);
+        if (organizerName) updatedData.organizerName = sanitizeHtml(organizerName);
         if (capacity !== undefined) updatedData.capacity = capacity;
         
         const updatedEvent = storage.updateEvent(req.params.id, updatedData);

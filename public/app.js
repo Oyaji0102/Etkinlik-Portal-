@@ -18,7 +18,7 @@ function setupEventListeners() {
 }
 
 // Tab switching
-function showTab(tabName) {
+function showTab(tabName, buttonElement) {
     // Hide all tabs
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
@@ -33,7 +33,9 @@ function showTab(tabName) {
     document.getElementById(`${tabName}-tab`).classList.add('active');
     
     // Add active class to clicked button
-    event.target.classList.add('active');
+    if (buttonElement) {
+        buttonElement.classList.add('active');
+    }
     
     // Load data for specific tabs
     if (tabName === 'events') {

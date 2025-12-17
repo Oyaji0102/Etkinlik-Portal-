@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const storage = require('../data/storage');
+const { sanitizeHtml } = require('../utils/sanitize');
 
 // Get all registrations for an event
 router.get('/event/:eventId', (req, res) => {
@@ -63,8 +64,8 @@ router.post('/', (req, res) => {
         const newRegistration = {
             id: uuidv4(),
             eventId,
-            userName,
-            userEmail,
+            userName: sanitizeHtml(userName),
+            userEmail: sanitizeHtml(userEmail),
             registeredAt: new Date().toISOString()
         };
         
