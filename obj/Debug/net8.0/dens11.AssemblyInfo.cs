@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dens11")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce17ed1f03a4d341a217a5e1df482fbb5365bb7e")]
 [assembly: System.Reflection.AssemblyProductAttribute("dens11")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dens11")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

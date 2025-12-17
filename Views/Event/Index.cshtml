@@ -1,0 +1,39 @@
+﻿@model IEnumerable<dens11.ViewModels.EventViewModel>
+
+<h2>Etkinlikler</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>Tarih</th>
+            <th>Kontenjan</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>@item.RegisteredCount / @item.Capacity</td>
+                <td>
+                    @if (!item.IsFull)
+                    {
+                        <form asp-action="Join" method="post">
+                            <input type="hidden" name="eventId" value="@item.Id" />
+                            <button class="btn btn-success btn-sm">
+                                Katıl
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Dolu</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

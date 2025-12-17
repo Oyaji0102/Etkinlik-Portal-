@@ -19,6 +19,9 @@ namespace dens11.Data
 
             // 2. İlk Admin Kullanıcısını Oluşturma
             await EnsureAdminUser(userManager);
+
+            // 3. İlk Normal Kullanıcıyı Oluşturma
+            await EnsureNormalUser(userManager);
         }
 
         private static async Task EnsureRole(RoleManager<IdentityRole> roleManager, string roleName)
@@ -49,6 +52,30 @@ namespace dens11.Data
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(adminUser, adminRole);
+                }
+            }
+        }
+
+        private static async Task EnsureNormalUser(UserManager<IdentityUser> userManager)
+        {
+            const string userEmail = "user@odev.com";
+            const string userPassword = "User123!";
+            const string userRole = "Kullanıcı";
+
+            if (await userManager.FindByEmailAsync(userEmail) == null)
+            {
+                var normalUser = new IdentityUser
+                {
+                    UserName = userEmail,
+                    Email = userEmail,
+                    EmailConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(normalUser, userPassword);
+
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(normalUser, userRole);
                 }
             }
         }

@@ -14,5 +14,9 @@ namespace dens11.ViewModels
         public int RemainingSeats { get; set; }
 
         public int Capacity { get; set; }
+
+        public int RegisteredCount { get; set; }
+
+        public bool IsFull => RegisteredCount >= Capacity;
     }
 }

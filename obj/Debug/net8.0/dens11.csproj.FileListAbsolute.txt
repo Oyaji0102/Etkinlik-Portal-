@@ -131,4 +131,5 @@ C:\Users\Arslan\source\repos\dens11\dens11\obj\Debug\net8.0\dens11.csproj.Up2Dat
 C:\Users\Arslan\source\repos\dens11\dens11\bin\Debug\net8.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 C:\Users\Arslan\source\repos\dens11\dens11\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\Arslan\source\repos\dens11\dens11\obj\Debug\net8.0\dens11.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Arslan\source\repos\dens11\dens11\obj\Debug\net8.0\dens11.sourcelink.json
 C:\Users\Arslan\source\repos\dens11\dens11\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

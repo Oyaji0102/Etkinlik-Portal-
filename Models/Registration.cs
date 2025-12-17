@@ -4,13 +4,13 @@ namespace dens11.Models
 {
     public class Registration
     {
-        // Composite Primary Key için anahtarlar
+        // Composite Key olacak (DbContext'te tanımlı)
         public int EventId { get; set; }
-        public string UserId { get; set; }
-
         public Event Event { get; set; }
+
+        public string UserId { get; set; }
         public IdentityUser User { get; set; }
 
-        public DateTime RegistrationDate { get; set; } = DateTime.Now;
+        public DateTime RegisteredAt { get; set; } = DateTime.Now;
     }
 }

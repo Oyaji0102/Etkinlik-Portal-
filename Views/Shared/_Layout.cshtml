@@ -27,7 +27,7 @@
                     <ul class="navbar-nav ms-auto">
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
-                            @if (User.IsInRole("Admin"))
+                            if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark"
@@ -44,6 +44,25 @@
                                         Mekanlar
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Admin"
+                                       asp-action="EventIndex">
+                                        Etkinlik Yönetimi
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <!-- 🔵 USER / ORGANIZER -->
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Event"
+                                       asp-action="Index">
+                                        Etkinlikler
+                                    </a>
+                                </li>
                             }
 
                             <li class="nav-item">
@@ -57,24 +76,19 @@
                                     </button>
                                 </form>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark"
-                                   asp-controller="Admin"
-                                   asp-action="EventIndex">
-                                    Etkinlikler
-                                </a>
-                            </li>
-
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="/Account/Login">Giriş</a>
-
+                                <a class="nav-link text-dark"
+                                   asp-controller="Account"
+                                   asp-action="Login">
+                                    Giriş
+                                </a>
                             </li>
                         }
                     </ul>
+
 
 
                 </div>
