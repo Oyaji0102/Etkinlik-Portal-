@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etkinlik Portalı</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎉 Etkinlik Portalı</h1>
+            <p>Etkinlik oluşturun ve katılın!</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('events')">Etkinlikler</button>
+            <button class="tab-button" onclick="showTab('create')">Etkinlik Oluştur</button>
+            <button class="tab-button" onclick="showTab('my-registrations')">Kayıtlarım</button>
+        </div>
+
+        <!-- Events List Tab -->
+        <div id="events-tab" class="tab-content active">
+            <h2>Mevcut Etkinlikler</h2>
+            <div class="filter-section">
+                <label for="filter-type">Tür:</label>
+                <select id="filter-type" onchange="filterEvents()">
+                    <option value="">Tümü</option>
+                    <option value="seminer">Seminer</option>
+                    <option value="konser">Konser</option>
+                    <option value="atölye">Atölye</option>
+                </select>
+            </div>
+            <div id="events-list" class="events-list"></div>
+        </div>
+
+        <!-- Create Event Tab -->
+        <div id="create-tab" class="tab-content">
+            <h2>Yeni Etkinlik Oluştur</h2>
+            <form id="create-event-form" class="event-form">
+                <div class="form-group">
+                    <label for="event-title">Etkinlik Başlığı *</label>
+                    <input type="text" id="event-title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-type">Etkinlik Türü *</label>
+                    <select id="event-type" name="type" required>
+                        <option value="">Seçiniz</option>
+                        <option value="seminer">Seminer</option>
+                        <option value="konser">Konser</option>
+                        <option value="atölye">Atölye</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-description">Açıklama</label>
+                    <textarea id="event-description" name="description" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-date">Tarih ve Saat *</label>
+                    <input type="datetime-local" id="event-date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-location">Konum</label>
+                    <input type="text" id="event-location" name="location">
+                </div>
+
+                <div class="form-group">
+                    <label for="event-organizer">Organizatör Adı *</label>
+                    <input type="text" id="event-organizer" name="organizerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-capacity">Kapasite</label>
+                    <input type="number" id="event-capacity" name="capacity" min="1">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Etkinlik Oluştur</button>
+            </form>
+        </div>
+
+        <!-- My Registrations Tab -->
+        <div id="my-registrations-tab" class="tab-content">
+            <h2>Kayıtlı Olduğum Etkinlikler</h2>
+            <div class="form-group">
+                <label for="user-email-check">E-posta Adresiniz:</label>
+                <div class="email-check-group">
+                    <input type="email" id="user-email-check" placeholder="email@example.com">
+                    <button onclick="loadMyRegistrations()" class="btn btn-secondary">Kayıtları Göster</button>
+                </div>
+            </div>
+            <div id="my-registrations-list" class="events-list"></div>
+        </div>
+    </main>
+
+    <!-- Registration Modal -->
+    <div id="registration-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegistrationModal()">&times;</span>
+            <h2>Etkinliğe Kayıt Ol</h2>
+            <form id="registration-form">
+                <input type="hidden" id="reg-event-id">
+                <div class="form-group">
+                    <label for="reg-user-name">Adınız Soyadınız *</label>
+                    <input type="text" id="reg-user-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-user-email">E-posta Adresiniz *</label>
+                    <input type="email" id="reg-user-email" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
