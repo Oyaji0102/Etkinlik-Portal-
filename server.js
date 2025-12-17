@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const eventRoutes = require('./routes/events');
 const registrationRoutes = require('./routes/registrations');
+const rateLimiter = require('./utils/rateLimiter');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +11,9 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Apply rate limiting to API routes
+app.use('/api', rateLimiter);
 
 // Routes
 app.use('/api/events', eventRoutes);
