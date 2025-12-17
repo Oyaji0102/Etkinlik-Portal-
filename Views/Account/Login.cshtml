@@ -1,0 +1,17 @@
+﻿@model LoginViewModel
+
+<h2>Giriş Yap</h2>
+
+<form asp-action="Login" method="post">
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" />
+    </div>
+
+    <div>
+        <label>Şifre</label>
+        <input asp-for="Password" type="password" />
+    </div>
+
+    <button type="submit">Giriş</button>
+</form>

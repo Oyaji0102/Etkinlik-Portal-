@@ -1,0 +1,38 @@
+﻿@model IEnumerable<dens11.ViewModels.EventViewModel>
+
+<h1>Etkinlik Yönetimi</h1>
+
+<p>
+    <a asp-action="CreateEvent" class="btn btn-primary">
+        Yeni Etkinlik Ekle
+    </a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>Tarih</th>
+            <th>Kontenjan</th>
+            <th>Kategori</th>
+            <th>Mekan</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Date.ToString("dd.MM.yyyy")</td>
+                <td>@item.Capacity</td>
+                <td>@item.CategoryName</td>
+                <td>@item.VenueName</td>
+                <td>
+                    <a asp-action="EditEvent" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a>
+                    <a asp-action="DeleteEvent" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

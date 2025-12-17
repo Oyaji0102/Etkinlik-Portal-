@@ -1,0 +1,16 @@
+﻿@model dens11.ViewModels.DeleteCategoryViewModel
+
+<h2>Kategori Sil</h2>
+
+<div class="alert alert-danger">
+    <strong>Uyarı!</strong>
+    <br />
+    "<b>@Model.Name</b>" kategorisini silmek üzeresiniz.
+</div>
+
+<form asp-action="DeleteCategoryConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    <a asp-action="CategoryIndex" class="btn btn-secondary">Vazgeç</a>
+</form>

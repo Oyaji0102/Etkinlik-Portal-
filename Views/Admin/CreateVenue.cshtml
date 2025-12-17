@@ -1,0 +1,20 @@
+﻿@model dens11.ViewModels.CreateVenueViewModel
+
+<h1>Yeni Mekan</h1>
+
+<form asp-action="CreateVenue" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a asp-action="VenueIndex" class="btn btn-secondary">İptal</a>
+</form>

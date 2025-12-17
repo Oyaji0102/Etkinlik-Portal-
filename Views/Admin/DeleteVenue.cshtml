@@ -1,0 +1,14 @@
+﻿@model dens11.ViewModels.DeleteVenueViewModel
+
+<h1>Mekan Sil</h1>
+
+<div class="alert alert-danger">
+    <strong>@Model.Name</strong> adlı mekanı silmek istediğinize emin misiniz?
+</div>
+
+<form asp-action="DeleteVenueConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="VenueIndex" class="btn btn-secondary">İptal</a>
+</form>
